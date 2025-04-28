@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Come Dine With The Fine</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ✅ Navigation Bar -->
+<header>
+        <nav>
+ 
+         <a href="home.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="recipe.html">RECIPE</a>
+        <a href="baking.html">BAKING</a>
+        <a href="shop.html">SHOP</a>
+        <a href="profile.html">PROFILE</a>
+  <input type="text" id="searchInput" placeholder="Search recipes..." />
+  <button id="searchBtn" type="button">Search</button>
+</div>
+    </nav>
+</header>
+<!-- ✅ Shop Title -->
+<section class="shop-title">
+  <h1>Shop</h1>
+</section>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Store</title>
+  <style>
+    body {
+         font-family: 'Georgia', serif;
+ 
+      background-color: #FDF6EC;
+    }
+    
+    nav a {
+    color: #FECBE0;
+    margin: 0 15px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #EAB8C0;
+}
+
+    .store {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      padding: 100px;
+      text-align: center;
+      box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    }
+ .card img {
+  width: 150%;
+  height: 300px;
+  object-fit: contain; /* or 'cover', depending on style you want */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+    .card h3 {
+      margin: 10px 0;
+    }
+    .card button {
+      background-color: #FECBE0;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .checkout {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .checkout h2 {
+      margin-bottom: 20px;
+    }
+    .checkout input, .checkout textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .checkout button {
+      background-color: #FECBE0;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .basket {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Dine With The Fine Shop</h1>
+
+  <div class="store">
+    <div class="card">
+      <img src="BakingBook.PNG" alt="Book 1">
+      <h3>Book Title One</h3>
+      <p>$10</p>
+      <button onclick="addToBasket('Book Title One', 10)">Add to Basket</button>
+    </div>
+
+    <div class="card">
+      <img src="CookBook.PNG" alt="Book 2">
+      <h3>Book Title Two</h3>
+      <p>$12</p>
+      <button onclick="addToBasket('Book Title Two', 12)">Add to Basket</button>
+    </div>
+
+    <div class="card">
+      <img src="RecipeBook.PNG" alt="Book 3">
+      <h3>Book Title Three</h3>
+      <p>$15</p>
+      <button onclick="addToBasket('Book Title Three', 15)">Add to Basket</button>
+    </div>
+  </div>
+
+  <div class="checkout">
+    <h2>Checkout</h2>
+
+    <div class="basket" id="basket">Basket: Empty</div>
+ <h3>Name</h3>
+    <textarea id="name" placeholder="Enter your name..."></textarea>
+    
+     <h3>Surname</h3>
+    <textarea id="surname" placeholder="Enter your surname..."></textarea>
+
+ <h3>Email</h3>
+    <textarea id="email" placeholder="Enter your email..."></textarea>
+
+    <h3>1 Address</h3>
+    <textarea id="shipping" placeholder="Enter your full address..."></textarea>
+   
+    
+     <h3>Country</h3>
+    <textarea id="country" placeholder="Enter your country..."></textarea>
+    
+     <h3>City</h3>
+    <textarea id="city" placeholder="Enter your city..."></textarea>
+    
+     <h3>County</h3>
+    <textarea id="county" placeholder="Enter your county..."></textarea>
+    
+     <h3>Postal Code</h3>
+    <textarea id="postalcode" placeholder="Enter your postal code ..."></textarea>
+    
+     <h3>Phone Number</h3>
+    <textarea id="phone" placeholder="Enter your phone number..."></textarea>
+
+    <h3>Banking Details</h3>
+    <input type="text" id="bankName" placeholder="Bank Name">
+    <input type="text" id="cardNumber" placeholder="Card Number">
+    <input type="text" id="expiry" placeholder="Expiry Date (MM/YY)">
+    <input type="text" id="cvv" placeholder="CVV">
+
+    <button onclick="checkout()">Confirm Order</button>
+  </div>
+
+  <script>
+let basket = [];
+
+function addToBasket(book, price) {
+  basket.push({book, price});
+  updateBasket();
+}
+
+function removeFromBasket(index) {
+  basket.splice(index, 1); // Remove 1 item at position 'index'
+  updateBasket();
+}
+
+function updateBasket() {
+  const basketElement = document.getElementById('basket');
+
+  if (basket.length === 0) {
+    basketElement.innerHTML = 'Basket: Empty';
+  } else {
+    let basketItems = basket.map((item, index) => `
+      <div style="margin-bottom: 5px;">
+        ${item.book} ($${item.price})
+        <button onclick="removeFromBasket(${index})" style="background-color: #FECBE0; color: white; border: none; padding: 4px 8px; border-radius: 4px; margin-left: 10px; cursor: pointer;">Remove</button>
+      </div>
+    `).join('');
+
+    let total = basket.reduce((sum, item) => sum + item.price, 0);
+    basketElement.innerHTML = `
+      ${basketItems}
+      <div style="margin-top: 10px; font-weight: bold;">Total: $${total}</div>
+    `;
+  }
+}
+
+function checkout() {
+  const name = document.getElementById('name').value;   
+  const surname = document.getElementById('surname').value;
+  const email = document.getElementById('email').value;
+  const shipping = document.getElementById('shipping').value;
+  const country = document.getElementById('country').value;
+  const city = document.getElementById('city').value;
+  const county = document.getElementById('county').value;
+  const postcode = document.getElementById('postalcode').value;
+  const phone = document.getElementById('phone').value;
+        
+  const bankName = document.getElementById('bankName').value;
+  const cardNumber = document.getElementById('cardNumber').value;
+  const expiry = document.getElementById('expiry').value;
+  const cvv = document.getElementById('cvv').value;
+
+  if (!shipping || !bankName || !cardNumber || !expiry || !cvv) {
+    alert('Please fill in all shipping and banking details!');
+    return;
+  }
+
+  alert('Thank you for your purchase!\nShipping to: ' + shipping);
+
+  // Clear basket
+  basket = [];
+  updateBasket();
+}
+</script>
+<script src="shop.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

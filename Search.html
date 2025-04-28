@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      color: #5a3e36;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #8a5c4c;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Results</h1>
+  <div id="results">Loading...</div>
+
+  <script src="Recipes.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q")?.toLowerCase().trim();
+    const resultsDiv = document.getElementById("results");
+
+    if (query) {
+      const filtered = recipes.filter(item =>
+        item.name.toLowerCase().includes(query)
+      );
+
+      if (filtered.length > 0) {
+        resultsDiv.innerHTML = `<ul>` +
+          filtered.map(item => `<li><a href="${item.url}">${item.name}</a></li>`).join("") +
+          `</ul>`;
+      } else {
+        resultsDiv.innerHTML = `<p>No results found for "<strong>${query}</strong>".</p>`;
+      }
+    } else {
+      resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
+    }
+  </script>
+  
+<section id="searchResults" class="search-results"></section>
+<script src="recipe.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
